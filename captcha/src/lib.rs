@@ -8,6 +8,8 @@ use rand::Rng;
 const WIDTH: u32 = 100;
 const HEIGHT: u32 = 50;
 
+pub use image::ImageFormat;
+
 pub fn generator() -> Result<(RgbaImage, String), Box<dyn Error>> {
     let code = code();
     let mut img = RgbaImage::new(WIDTH, HEIGHT);
