@@ -1,0 +1,14 @@
+[package]
+name = "captcha-web"
+version = "0.1.0"
+edition = "2021"
+authors = ["axum.rs <team@axum.rs>"]
+license = "MIT"
+repository = "https://github.com/axumrs/captcha"
+homepage = "https://axum.rs"
+description = "验证码"
+
+[dependencies]
+captcha = { path = "../captcha" }
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }

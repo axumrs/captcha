@@ -1,0 +1,3 @@
+[workspace]
+members = ["captcha", "captcha-web"]
+resolver = "2"
