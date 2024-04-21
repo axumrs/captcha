@@ -66,4 +66,28 @@ mod tests {
         // 保存
         img.save("foo.png").unwrap();
     }
+
+    #[test]
+    fn draw_curve() {
+        let mut img = RgbaImage::new(100, 100);
+
+        // #22d3ee - cyan-400(tailwind css)
+        let start = Rgba::from_slice(&[0x22, 0xd3, 0xee, 0xff]);
+        // #164e63 - cyan-900(tailwind css)
+        let end = Rgba::from_slice(&[0x16, 0x4e, 0x63, 0xff]);
+        imageops::vertical_gradient(&mut img, start, end);
+
+        // 绘制曲线
+        drawing::draw_cubic_bezier_curve_mut(
+            &mut img,
+            (78.9, 90.0),
+            (89.0, 99.0),
+            (78.9, 90.0),
+            (81.0, 7.0),
+            Rgba([255u8, 0u8, 0u8, 255u8]),
+        );
+
+        // 保存
+        img.save("foo.png").unwrap();
+    }
 }
