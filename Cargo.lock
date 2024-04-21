@@ -248,6 +248,7 @@ dependencies = [
  "ab_glyph",
  "image",
  "imageproc",
+ "rand",
 ]
 
 [[package]]
