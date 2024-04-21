@@ -19,9 +19,27 @@ mod tests {
         // #22d3ee - cyan-400(tailwind css)
         let start = Rgba::from_slice(&[0x22, 0xd3, 0xee, 0xff]);
         // #164e63 - cyan-900(tailwind css)
-        let end = Rgba::from_slice(&[0x16, 0x43, 0x63, 0xff]);
+        let end = Rgba::from_slice(&[0x16, 0x4e, 0x63, 0xff]);
 
         imageops::vertical_gradient(&mut img, start, end);
+        // 保存
+        img.save("foo.png").unwrap();
+    }
+
+    #[test]
+    fn draw_pixel() {
+        let mut img = RgbaImage::new(100, 100);
+
+        // #22d3ee - cyan-400(tailwind css)
+        let start = Rgba::from_slice(&[0x22, 0xd3, 0xee, 0xff]);
+        // #164e63 - cyan-900(tailwind css)
+        let end = Rgba::from_slice(&[0x16, 0x4e, 0x63, 0xff]);
+        imageops::vertical_gradient(&mut img, start, end);
+
+        // 像素（颜色）：黄色，不透明
+        let pixel = image::Rgba::from_slice(&[0xff, 0xff, 0x0, 0xff]);
+        img.put_pixel(12, 34, *pixel);
+
         // 保存
         img.save("foo.png").unwrap();
     }
