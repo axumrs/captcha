@@ -18,7 +18,7 @@ pub fn generator() -> Result<(RgbaImage, String), Box<dyn Error>> {
     imageops::vertical_gradient(&mut img, start, end);
 
     // 加载字体
-    let font = FontRef::try_from_slice(include_bytes!("../jxzk.ttf")).unwrap();
+    let font = FontRef::try_from_slice(include_bytes!("../jxzk.ttf"))?;
 
     let mut rnd = rand::thread_rng();
 
