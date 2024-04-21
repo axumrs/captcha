@@ -99,4 +99,32 @@ mod tests {
         let font = FontRef::try_from_slice(include_bytes!("../jxzk.ttf")).unwrap();
         println!("{:?}", font.type_id());
     }
+
+    #[test]
+    fn draw_text() {
+        let mut img = RgbaImage::new(100, 100);
+
+        // #22d3ee - cyan-400(tailwind css)
+        let start = Rgba::from_slice(&[0x22, 0xd3, 0xee, 0xff]);
+        // #164e63 - cyan-900(tailwind css)
+        let end = Rgba::from_slice(&[0x16, 0x4e, 0x63, 0xff]);
+        imageops::vertical_gradient(&mut img, start, end);
+
+        // 加载字体
+        let font = FontRef::try_from_slice(include_bytes!("../jxzk.ttf")).unwrap();
+
+        // 绘制文本
+        drawing::draw_text_mut(
+            &mut img,
+            image::Rgba([255u8, 255u8, 255u8, 255u8]),
+            10,
+            35,
+            20f32,
+            &font,
+            "AXUM中文网",
+        );
+
+        // 保存
+        img.save("foo.png").unwrap();
+    }
 }
