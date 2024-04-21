@@ -1,5 +1,8 @@
 #[cfg(test)]
 mod tests {
+    use std::any::Any;
+
+    use ab_glyph::FontRef;
     use image::{imageops, Pixel, Rgba, RgbaImage};
     use imageproc::drawing;
 
@@ -89,5 +92,11 @@ mod tests {
 
         // 保存
         img.save("foo.png").unwrap();
+    }
+
+    #[test]
+    fn load_font() {
+        let font = FontRef::try_from_slice(include_bytes!("../jxzk.ttf")).unwrap();
+        println!("{:?}", font.type_id());
     }
 }

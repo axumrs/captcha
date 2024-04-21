@@ -11,3 +11,4 @@ description = "验证码"
 [dependencies]
 image = "0.25"
 imageproc = "0.24"
+ab_glyph = "0.2"
